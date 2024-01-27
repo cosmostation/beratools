@@ -1,4 +1,5 @@
-import { Table } from "@mui/joy";
+import { Stack, Table, Typography } from "@mui/joy";
+
 import { ellipsisAddress } from "@/utils/strings";
 
 export const Guage = () => {
@@ -46,21 +47,24 @@ export const Guage = () => {
   ];
 
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th style={{ width: "65%" }}>Address</th>
-        </tr>
-      </thead>
-      <tbody>
-        {guages.map((guage, index) => (
-          <tr key={index}>
-            <td>{guage.description}</td>
-            <td>{ellipsisAddress(guage.address)}</td>
+    <Stack spacing={1}>
+      <Typography level="title-lg">Guages</Typography>
+      <Table>
+        <thead>
+          <tr>
+            <th>Guage</th>
+            <th style={{ width: "65%" }}>Address</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {guages.map((guage, index) => (
+            <tr key={index}>
+              <td>{guage.description}</td>
+              <td>{ellipsisAddress(guage.address)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Stack>
   );
 };

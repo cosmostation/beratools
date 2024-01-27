@@ -12,6 +12,7 @@ import {
 } from "@mui/joy";
 
 import { Account } from "@/components/Account";
+import { AddressMapping } from "@/components/AddressMapping";
 import { Balance } from "@/components/Balance";
 import { Berachef } from "@/components/Berachef";
 import { Bribe } from "@/components/Bribe";
@@ -28,7 +29,7 @@ function App() {
       <Card sx={{ m: 5 }}>
         <Stack spacing={3}>
           <Stack direction="row" justifyContent="space-between">
-            <Typography level="h1">Bera Tools ⚒️</Typography>
+            <Typography level="h1">🐻 Bera Tools ⚒️</Typography>
             <Account />
           </Stack>
 
@@ -36,12 +37,13 @@ function App() {
             value={index}
             onChange={(event, value) => setIndex(value as number)}
           >
-            <TabList disableUnderline>
+            <TabList disableUnderline sx={{ mb: 3 }}>
               <Tab disableIndicator>Berachef</Tab>
               <Tab disableIndicator>Bribe</Tab>
               <Tab disableIndicator>Guages</Tab>
               <Tab disableIndicator>Validators</Tab>
               <Tab disableIndicator>Balances</Tab>
+              <Tab disableIndicator>Address Mapping</Tab>
             </TabList>
             <TabPanel value={0}>
               <Berachef />
@@ -57,6 +59,9 @@ function App() {
             </TabPanel>
             <TabPanel value={4}>
               <Balance address={account.address} />
+            </TabPanel>
+            <TabPanel value={5}>
+              <AddressMapping />
             </TabPanel>
           </Tabs>
         </Stack>

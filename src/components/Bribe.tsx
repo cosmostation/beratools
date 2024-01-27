@@ -1,4 +1,4 @@
-import { Button, Input, Stack, Table, Typography } from "@mui/joy";
+import { Button, Divider, Input, Stack, Table, Typography } from "@mui/joy";
 import { useAccount, useReadContract, useWriteContract } from "wagmi";
 
 import BRIBE_ABI from "@/abi/IBribeModule.abi";
@@ -62,6 +62,7 @@ export const Bribe = () => {
           </tbody>
         </Table>
       </Stack>
+      <Divider />
       <Stack spacing={1}>
         <Typography level="title-lg">Create Bribe</Typography>
         <Input

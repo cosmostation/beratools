@@ -1,4 +1,4 @@
-import { Box, Table, Typography } from "@mui/joy";
+import { Box, Stack, Table, Typography } from "@mui/joy";
 
 import { CosmosBalance } from "./CosmosBalance";
 import { ErcBalance } from "./ErcBalance";
@@ -14,25 +14,43 @@ export const Balance = ({ address }: IProps) => {
     { name: "WBTC", address: "0x9DAD8A1F64692adeB74ACa26129e0F16897fF4BB" },
   ];
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Amount</th>
-          <th>Denom</th>
-        </tr>
-      </thead>
-      <tbody>
-        {contracts.map((contract) => {
-          return (
-            <ErcBalance
-              name={contract.name}
-              owner={address}
-              token={contract.address}
-            />
-          );
-        })}
-        <CosmosBalance address={address} />
-      </tbody>
-    </Table>
+    <Stack spacing={5}>
+      <Stack spacing={1}>
+        <Typography level="title-lg">EVM Balance</Typography>
+        <Table>
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Denom</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contracts.map((contract) => {
+              return (
+                <ErcBalance
+                  name={contract.name}
+                  owner={address}
+                  token={contract.address}
+                />
+              );
+            })}
+          </tbody>
+        </Table>
+      </Stack>{" "}
+      <Stack spacing={1}>
+        <Typography level="title-lg">Cosmos Balance</Typography>
+        <Table>
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Denom</th>
+            </tr>
+          </thead>
+          <tbody>
+            <CosmosBalance address={address} />
+          </tbody>
+        </Table>
+      </Stack>
+    </Stack>
   );
 };
