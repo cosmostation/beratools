@@ -65,7 +65,9 @@ export const Bribe = () => {
       <Stack spacing={1}>
         <Typography level="title-lg">Create Bribe</Typography>
         <Input
-          placeholder={`Start epoch ( current : ${currentEpoch[0].toString()} )`}
+          placeholder={`Start epoch ( current : ${
+            currentEpoch ? currentEpoch[0].toString() : 0
+          } )`}
           variant="outlined"
           value={startEpoch}
           onChange={(event) => setStartEpoch(event.target.value)}

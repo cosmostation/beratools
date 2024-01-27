@@ -11,6 +11,7 @@ const EPOCH_PRECOMPILE_ADDRESS = "0x612Dd8a861161819A4AD8F6f3E2A0567602877c0";
 const BERACHEF_PRECOMPILE_ADDRESS =
   "0x888AF53B67D1698E04B2B9A9406AF0FFEB2EF05E";
 export const Berachef = () => {
+  const account = useAccount();
   const [startEpoch, setStartEpoch] = useState("");
   const [weights, setWeights] = useState(
     JSON.stringify([
@@ -20,7 +21,6 @@ export const Berachef = () => {
       },
     ])
   );
-  const account = useAccount();
   const { writeContract, error } = useWriteContract();
   const { data: activateCuttingBoards }: any = useReadContract({
     address: BERACHEF_PRECOMPILE_ADDRESS,
@@ -41,7 +41,6 @@ export const Berachef = () => {
     args: ["berachain_epoch_identifier"],
   });
 
-  if (!activateCuttingBoards) return <>This address is not a Validator.</>;
   return (
     <Stack spacing={5}>
       <Stack spacing={1}>
@@ -54,14 +53,17 @@ export const Berachef = () => {
             </tr>
           </thead>
           <tbody>
-            {activateCuttingBoards.weights.map((weight: any, index: number) => {
-              return (
-                <tr key={index}>
-                  <td>{ellipsisAddress(weight.receiverAddress)}</td>
-                  <td>{ethers.formatEther(weight.percentageNumerator)}</td>
-                </tr>
-              );
-            })}
+            {activateCuttingBoards &&
+              activateCuttingBoards.weights.map(
+                (weight: any, index: number) => {
+                  return (
+                    <tr key={index}>
+                      <td>{ellipsisAddress(weight.receiverAddress)}</td>
+                      <td>{ethers.formatEther(weight.percentageNumerator)}</td>
+                    </tr>
+                  );
+                }
+              )}
           </tbody>
         </Table>
       </Stack>
@@ -92,7 +94,9 @@ export const Berachef = () => {
       <Stack spacing={1}>
         <Typography level="title-lg">Queue New Cutting Boards</Typography>
         <Input
-          placeholder={`Start epoch ( current : ${currentEpoch[0].toString()} )`}
+          placeholder={`Start epoch ( current : ${
+            currentEpoch ? currentEpoch[0].toString() : 0
+          } )`}
           variant="outlined"
           value={startEpoch}
           onChange={(event) => setStartEpoch(event.target.value)}
