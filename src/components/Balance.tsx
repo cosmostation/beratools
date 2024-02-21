@@ -13,6 +13,9 @@ export const Balance = ({ address }: IProps) => {
     { name: "WETH", address: "0x8239FBb3e3D0C2cDFd7888D8aF7701240Ac4DcA4" },
     { name: "WBTC", address: "0x9DAD8A1F64692adeB74ACa26129e0F16897fF4BB" },
   ];
+  if (!address) {
+    return <Typography level="title-md">Please connect wallet.</Typography>;
+  }
   return (
     <Stack spacing={5}>
       <Stack spacing={1}>

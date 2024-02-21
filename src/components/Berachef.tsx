@@ -41,6 +41,9 @@ export const Berachef = () => {
     args: ["berachain_epoch_identifier"],
   });
 
+  if (!account.address) {
+    return <Typography level="title-md">Please connect wallet.</Typography>;
+  }
   return (
     <Stack spacing={5}>
       <Stack spacing={1}>

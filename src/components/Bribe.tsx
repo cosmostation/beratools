@@ -34,6 +34,10 @@ export const Bribe = () => {
     args: ["berachain_epoch_identifier"],
   });
 
+  if (!account.address) {
+    return <Typography level="title-md">Please connect wallet.</Typography>;
+  }
+
   return (
     <Stack spacing={5}>
       <Stack spacing={1}>
@@ -105,7 +109,7 @@ export const Bribe = () => {
             });
           }}
         >
-          Queue New Cutting Board
+          Create Bribe
         </Button>
         <Typography>{error?.message}</Typography>
       </Stack>

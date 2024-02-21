@@ -38,27 +38,27 @@ function App() {
             onChange={(event, value) => setIndex(value as number)}
           >
             <TabList disableUnderline sx={{ mb: 3 }}>
+              <Tab disableIndicator>Dashboard</Tab>
               <Tab disableIndicator>Berachef</Tab>
               <Tab disableIndicator>Bribe</Tab>
               <Tab disableIndicator>Guages</Tab>
               <Tab disableIndicator>Validators</Tab>
-              <Tab disableIndicator>Balances</Tab>
               <Tab disableIndicator>Address Mapping</Tab>
             </TabList>
             <TabPanel value={0}>
-              <Berachef />
+              <Balance address={account.address} />
             </TabPanel>
             <TabPanel value={1}>
-              <Bribe />
+              <Berachef />
             </TabPanel>
             <TabPanel value={2}>
-              <Guage />
+              <Bribe />
             </TabPanel>
             <TabPanel value={3}>
-              <Validator />
+              <Guage />
             </TabPanel>
             <TabPanel value={4}>
-              <Balance address={account.address} />
+              <Validator />
             </TabPanel>
             <TabPanel value={5}>
               <AddressMapping />

@@ -1,5 +1,3 @@
-import { ByteArray } from "viem";
-
 export const ellipsisAddress = (hexAddress: any) => {
   try {
     return hexAddress
